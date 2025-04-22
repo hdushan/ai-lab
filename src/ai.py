@@ -32,14 +32,14 @@ def ask_ai(message):
 
     try:
         client = OpenAI(api_key=api_key)
-        response = client.chat.completions.create(
+        response = client.responses.create(
             model="gpt-4",
-            messages=[
+            input=[
                 {"role": "system", "content": "Talk like a news reporter"},
                 {"role": "user", "content": message},
             ],
         )
-        return response.choices[0].message.content
+        return response.output_text
     except APIError as e:
         # Handle OpenAI-specific errors
         raise RuntimeError(f"OpenAI API error: {str(e)}") from e

@@ -39,7 +39,7 @@ def test_ask_ai_handles_api_error(mock_openai):
     mock_client = mock.MagicMock()
     mock_openai.return_value = mock_client
     
-    mock_completion = mock_client.chat.completions.create
+    mock_completion = mock_client.responses.create
     mock_completion.side_effect = APIError(
         message="API rate limit exceeded",
         request="mock_request",
@@ -59,7 +59,7 @@ def test_ask_ai_handles_connection_error(mock_openai):
     mock_client = mock.MagicMock()
     mock_openai.return_value = mock_client
     
-    mock_completion = mock_client.chat.completions.create
+    mock_completion = mock_client.responses.create
     mock_completion.side_effect = ConnectionError("Failed to establish a connection")
     
     # Test that ConnectionError is raised with the appropriate message
@@ -75,7 +75,7 @@ def test_ask_ai_handles_generic_exception(mock_openai):
     mock_client = mock.MagicMock()
     mock_openai.return_value = mock_client
     
-    mock_completion = mock_client.chat.completions.create
+    mock_completion = mock_client.responses.create
     mock_completion.side_effect = Exception("Unexpected error occurred")
     
     # Test that RuntimeError is raised with the appropriate message
