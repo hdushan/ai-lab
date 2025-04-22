@@ -1,0 +1,46 @@
+# Mac/OSX
+.DS_Store
+
+# Byte-compiled / optimized / DLL files
+**/__pycache__
+**/*.py[cod]
+
+*/**/*$py.class
+
+# C extensions
+*/**/*.so
+
+# Distribution / packaging
+.Python
+build/
+lib/
+bin/
+
+# pyenv
+.python-version
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# pyenv
+#   For a library or package, you might want to ignore these files since the code is
+#   intended to run in multiple environments; otherwise, check them in:
+# .python-version
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
+__pypackages__/
+
+# Environments
+.venv
