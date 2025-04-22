@@ -20,6 +20,10 @@ jobs:
           python-version: "3.13"
       - name: Install packages with pip
         run: pip install -r requirements.txt
+      - name: Lint with pylint
+        run: pylint src/
+      - name: PEP8 style check with black
+        run: black src/
       - name: Run all tests
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
