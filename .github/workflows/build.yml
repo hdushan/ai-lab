@@ -24,7 +24,7 @@ jobs:
         run: pylint src/
       - name: PEP8 style check with black
         run: black src/
-      - name: Run all tests
+      - name: Run all tests and show coverage
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: pytest tests/ -vs
+        run: coverage run -m pytest && coverage report -m

@@ -1,0 +1,12 @@
+[run]
+source = 
+    src/
+omit =
+    **/__init__.py
+
+[report]
+show_missing = true
+skip_empty = true
+precision = 2
+fail_under = 95
+sort = -cover
