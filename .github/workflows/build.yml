@@ -3,7 +3,7 @@ name: Python CI
 on:
   push:
     paths-ignore:
-      - '**/README.md'
+      - "**/README.md"
 
 jobs:
   build:
@@ -21,10 +21,10 @@ jobs:
       - name: Install packages with pip
         run: pip install -r requirements.txt
       - name: Lint with pylint
-        run: pylint src/
+        run: python -m pylint src/
       - name: PEP8 style check with black
-        run: black src/
+        run: python -m black src/
       - name: Run all tests and show coverage
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: coverage run -m pytest && coverage report -m
+        run: python -m coverage run -m pytest && python -m coverage report
