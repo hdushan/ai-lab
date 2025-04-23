@@ -5,6 +5,7 @@ through their API.
 """
 
 import os
+import json
 from openai import OpenAI, APIError
 
 
@@ -35,11 +36,19 @@ def ask_ai(message):
         response = client.responses.create(
             model="gpt-4",
             input=[
-                {"role": "system", "content": "Talk like a news reporter"},
+                {
+                    "role": "system",
+                    "content": "Talk like a news reporter, respond in json format",
+                },
                 {"role": "user", "content": message},
             ],
+            text={
+                "format": {
+                    "type": "json_object",
+                }
+            },
         )
-        return response.output_text
+        return json.loads(response.output_text)
     except APIError as e:
         # Handle OpenAI-specific errors
         raise RuntimeError(f"OpenAI API error: {str(e)}") from e
